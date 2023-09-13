@@ -9,10 +9,10 @@ public class Block extends Actor
 {
     
     public Block() {
-        setImage("img/Tiles/2.png");
+        setImage("img/Tiles/2.png"); 
     }
     
-    public void act() {
+    public void act(){
     }
     
 }
