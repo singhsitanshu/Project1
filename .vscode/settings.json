@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "h:\\CSIII\\mayflower3.3.7.jar"
+    ]
+}

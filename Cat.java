@@ -39,6 +39,7 @@ public class Cat extends MoveableAnimatedActor
         idleLeft.setBounds(28, 5, 54, 80);
         
         files = new String[8];
+        
         for(int i = 0; i < 8; i++) {
             files[i] = "img/cat/Fall (" + (i + 1) + ").png";
         }
