@@ -17,7 +17,6 @@ public class GravityActor extends Actor
         setLocation(getX(), getY() + 1);
         touch = isBlocked();
         setLocation(getX(), getY() - 1);
-        int bob = 0;
         return !touch;
     }
     
