@@ -8,6 +8,7 @@ public class Cat extends MoveableAnimatedActor
     private Animation walkLeft;
     private Animation fall;
     private Animation fallLeft;
+    //test
     
     public Cat() 
     {
