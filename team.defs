@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Fri Sep 15 15:51:45 CDT 2023
 bluej.teamsettings.groupname=
 bluej.teamsettings.git.repositoryPrefix=/singhsitanshu/Project1
@@ -9,6 +10,19 @@ bluej.teamsettings.ignore8=\\.DS_Store
 bluej.teamsettings.vcs=git
 bluej.teamsettings.ignore7=.*\\\#backup
 bluej.teamsettings.yourName=Taj Bhattacharjee
+=======
+#Fri Sep 15 15:50:23 CDT 2023
+bluej.teamsettings.groupname=
+bluej.teamsettings.git.repositoryPrefix=/singhsitanshu/Project1
+bluej.teamsettings.git.protocol=https
+bluej.teamsettings.user=singhsitanshu
+bluej.teamsettings.git.server=github.com
+bluej.teamsettings.yourEmail=singhsitanshu2006@gmail.com
+bluej.teamsettings.vcs=git
+bluej.teamsettings.ignore8=\\.DS_Store
+bluej.teamsettings.yourName=Sitanshu Singh
+bluej.teamsettings.ignore7=.*\\\#backup
+>>>>>>> 18100e5f1b2e445c77c776e665b26f4b1e5a0c7c
 bluej.teamsettings.ignore6=.*\\\#
 bluej.teamsettings.ignore5=.*\\~
 bluej.teamsettings.ignore4=.*\\.ctxt

@@ -11,6 +11,7 @@ dependency11.type=UsesDependency
 dependency12.from=MyWorld
 dependency12.to=Block
 dependency12.type=UsesDependency
+<<<<<<< HEAD
 dependency13.from=Cat
 dependency13.to=Animation
 dependency13.type=UsesDependency
@@ -22,6 +23,19 @@ dependency3.to=Block
 dependency3.type=UsesDependency
 dependency4.from=Lab6Runner
 dependency4.to=MyMayflower
+=======
+dependency13.from=Lab6Runner
+dependency13.to=MyMayflower
+dependency13.type=UsesDependency
+dependency2.from=Cat
+dependency2.to=Animation
+dependency2.type=UsesDependency
+dependency3.from=Dog
+dependency3.to=Animation
+dependency3.type=UsesDependency
+dependency4.from=GravityActor
+dependency4.to=Block
+>>>>>>> 18100e5f1b2e445c77c776e665b26f4b1e5a0c7c
 dependency4.type=UsesDependency
 dependency5.from=AnimatedActor
 dependency5.to=Animation
@@ -38,18 +52,30 @@ dependency8.type=UsesDependency
 dependency9.from=MyWorld
 dependency9.to=Cat
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=552
 editor.fx.0.y=98
+=======
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+>>>>>>> 18100e5f1b2e445c77c776e665b26f4b1e5a0c7c
 objectbench.height=155
 objectbench.width=1021
 package.divider.horizontal=0.6
 package.divider.vertical=0.7452830188679245
 package.editor.height=467
 package.editor.width=913
+<<<<<<< HEAD
 package.editor.x=411
 package.editor.y=200
+=======
+package.editor.x=580
+package.editor.y=139
+>>>>>>> 18100e5f1b2e445c77c776e665b26f4b1e5a0c7c
 package.frame.height=736
 package.frame.width=1061
 package.numDependencies=13
