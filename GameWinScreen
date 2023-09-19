@@ -1,0 +1,13 @@
+import mayflower.*;
+
+public class GameWinScreen extends World{
+    
+    public GameWinScreen(){
+     
+        //setBackground("img");
+    }
+    
+    public void act(){
+        
+    }
+}
