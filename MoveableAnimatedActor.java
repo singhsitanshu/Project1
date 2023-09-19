@@ -72,13 +72,19 @@ public class MoveableAnimatedActor extends AnimatedActor
             direction = "left";
         }
         else if(Mayflower.isKeyDown(Keyboard.KEY_UP) && y > 0) {
-            setLocation(x, y - 1);
-            if(isBlocked()) {
-                setLocation(x, y);
+            
+            if (isLadder())
+            {
+                setLocation(x, y - 5);
+            }
+            else
+            {
+                setLocation(x, y - 1);
             }
         }
         else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN) && y < 600 - h) {
             setLocation(x, y + 1);
+            
             if(isBlocked()) {
                 setLocation(x, y);
             }
