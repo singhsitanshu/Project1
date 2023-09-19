@@ -11,12 +11,22 @@ public class GravityActor extends Actor
         return isTouching(Block.class);
     }
     
+    public boolean isLadder() {
+        return isTouching(Ladder.class);
+    }
+    
     public boolean isFalling() {
         boolean touch;
         
-        setLocation(getX(), getY() + 1);
-        touch = isBlocked();
-        setLocation(getX(), getY() - 1);
+        touch = true;
+        
+        if (!isLadder())
+        {
+            setLocation(getX(), getY() + 1);
+            touch = isBlocked();
+            setLocation(getX(), getY() - 1);
+        }
+        
         return !touch;
     }
     
@@ -26,5 +36,4 @@ public class GravityActor extends Actor
             setLocation(getX(), getY() - 1);
         }
     }
-    
 }
