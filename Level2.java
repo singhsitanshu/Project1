@@ -26,6 +26,23 @@ public class Level2 extends World
         }
     }
     
+    public void cycleWorld() {
+        for(int i = 0; i < tiles.length - 1; i++) {
+            for(int j = 0; j < tiles[i].length; j++) {
+                tiles[i][j] = tiles[i + 1][j];
+            }
+        }
+        
+        for(int i = 0; i < tiles.length; i++) {
+            for(int j = 0; j < tiles[i].length; j++) {
+                switch(tiles[i][j]) {
+                    case "depths":
+                        addObject(new Water(waterType.DEPTHS), j * 100, i * 100);
+                }
+            }
+        }
+    }
+    
     public void act() {
     }
     
