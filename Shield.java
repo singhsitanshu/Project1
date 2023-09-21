@@ -5,7 +5,7 @@ public class Shield extends Actor
 {
     public Shield()
     {
-        setImage("img/Object/crate.png");
+        setImage("img/Object/shield.png");
     }
     
     public void act(){
