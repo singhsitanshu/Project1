@@ -80,12 +80,6 @@ public class Cat extends MoveableAnimatedActor
             Mayflower.setWorld(new LevelBoss());
         else if (hasCompletedLevel1)
             Mayflower.setWorld(new Level2());
-        else if (isGameStarted)
-            Mayflower.setWorld(new Level1());
-        
-        if (!isGameStarted && Mayflower.isKeyDown(Keyboard.KEY_ENTER)){
-            
-            isGameStarted = true;
-        }
+
     }
 }
