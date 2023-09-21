@@ -7,13 +7,17 @@ public class Level1 extends World {
     private Dog dog;
     private String[][] tiles;
     private Ninja blevins;
+    private Block[] blocks;
+    private Ladder[] ladders;
     
     public Level1() 
     {
         setBackground("img/BG/BG.png");
         Mayflower.showBounds(true);
         
-        tiles = new String[10][10];
+        tiles = new String[99][99];
+        blocks = new Block[100];
+        ladders = new Ladder[1];
         
         cat = new Cat();
         addObject(cat, 400, 100);
@@ -29,12 +33,26 @@ public class Level1 extends World {
     
     public void act()
     {
+        for (int i = 0; i < blocks.length; i++)
+        {
+            blocks[i].setLocation(blocks[i].getX() - 1, blocks[i].getY());
+        }
+        
+        for (int i = 0; i < ladders.length; i++)
+        {
+            ladders[i].setLocation(ladders[i].getX() - 1, ladders[i].getY());
+        }
     }
     
     public void buildWorld()
-    {   
-        addObject(new Block(), 500, 600-256);
-        addObject(new Ladder(), 400, 600 - 256);
+    {
+        Block block = new Block();
+        blocks[blocks.length-1] = block;
+        addObject(block, 500, 600-256);
+        
+        Ladder ladder = new Ladder();
+        ladders[0] = ladder;
+        addObject(ladder, 400, 600 - 256);
         
         for (int x = 0; x < tiles.length; x++)
         {
@@ -63,8 +81,10 @@ public class Level1 extends World {
             for (int c = 0; c < tiles[r].length; c++)
             {
                 if (tiles[r][c].equals("ground"))
-                {   
-                    addObject(new Block(), c * 100, 600 - 128);
+                {
+                    Block ground = new Block();
+                    blocks[c] = ground;
+                    addObject(ground, c * 128, 600 - 128);
                 }
             }
         }
