@@ -77,10 +77,6 @@ public class MoveableAnimatedActor extends AnimatedActor
             {
                 setLocation(x, y - 5);
             }
-            else
-            {
-                setLocation(x, y - 1);
-            }
         }
         else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN) && y < 600 - h) {
             setLocation(x, y + 1);
