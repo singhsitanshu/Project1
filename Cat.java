@@ -13,7 +13,8 @@ public class Cat extends MoveableAnimatedActor
     private boolean hasCompletedLevel2;
     private boolean hasWon;
     private boolean hasLost;
-    private boolean isGameStarted;
+    private boolean hasShield;
+    
     //test15
     
     public Cat() 
@@ -66,6 +67,12 @@ public class Cat extends MoveableAnimatedActor
         setIdleLeftAnimation(idleLeft);
         setFallAnimation(fall);
         setFallLeftAnimation(fallLeft);
+        
+        hasShield = false;
+        hasCompletedLevel1 = false;
+        hasCompletedLevel2 = false;
+        hasWon = false;
+        hasLost = false;
     }
     
     public void act()
@@ -76,10 +83,15 @@ public class Cat extends MoveableAnimatedActor
             Mayflower.setWorld(new GameWinScreen());
         else if (hasLost)
             Mayflower.setWorld(new GameLostScreen());
-        else if (hasCompletedLevel2)
-            Mayflower.setWorld(new LevelBoss());
+       // else if (hasCompletedLevel2)
+            //Mayflower.setWorld(new LevelBoss());
         else if (hasCompletedLevel1)
             Mayflower.setWorld(new Level2());
-
+ 
+    }
+    
+    public void setHasShield(boolean bool){
+     
+        hasShield = bool;
     }
 }
