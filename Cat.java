@@ -83,8 +83,8 @@ public class Cat extends MoveableAnimatedActor
             Mayflower.setWorld(new GameWinScreen());
         else if (hasLost)
             Mayflower.setWorld(new GameLostScreen());
-       // else if (hasCompletedLevel2)
-            //Mayflower.setWorld(new LevelBoss());
+        else if (hasCompletedLevel2)
+            Mayflower.setWorld(new LevelBoss());
         else if (hasCompletedLevel1)
             Mayflower.setWorld(new Level2());
  
