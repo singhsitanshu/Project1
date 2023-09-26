@@ -15,10 +15,9 @@ public class Cat extends MoveableAnimatedActor
     private boolean hasLost;
     private boolean hasShield;
     private int lives;
+    private Timer invulTimer;
     
-    //test15
-    
-    public Cat() 
+    public Cat(int lives) 
     {
         String[] files = new String[10];
         for(int i = 0; i < 10; i++) {
@@ -74,6 +73,8 @@ public class Cat extends MoveableAnimatedActor
         hasCompletedLevel2 = false;
         hasWon = false;
         hasLost = false;
+        this.lives = lives;
+        invulTimer = new Timer(2000000000);
     }
     
     public void act()
@@ -98,14 +99,25 @@ public class Cat extends MoveableAnimatedActor
 
     public void decreaseLives(int amount)
     {
-        this.lives -= amount;
-        setLocation(400, 300);
-        updateText();
+        if(invulTimer.isDone()) {
+            invulTimer.reset();
+            
+            this.lives -= amount;
+            updateText();
+        }
     }
     
     public int getLives()
     {
         return this.lives;
+    }
+
+    public int getX() {
+        return super.getX();
+    }
+    
+    public int getY() {
+        return super.getY();
     }
     
     private void updateText()
