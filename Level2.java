@@ -7,6 +7,7 @@ public class Level2 extends World
     private Timer cycleTimer;
     private int cycleCount;
     private boolean hasFinished;
+    private Cat c;
     
     public Level2() {
         setBackground("img/BG/BGWater.png");
@@ -15,6 +16,9 @@ public class Level2 extends World
         cycleTimer = new Timer(1000000000);
         cycleCount = 0;
         hasFinished = false;
+        
+        c = new Cat(3);
+        addObject(c, 400, 100);
         
         buildWorld();
     }
@@ -92,6 +96,7 @@ public class Level2 extends World
     }
     
     public void act() {
+        addObject(c, c.getX(), c.getY());
         if(cycleTimer.isDone() && cycleCount <= 50) {
             cycleTimer.reset();
             cycleWorld();
