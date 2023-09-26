@@ -6,13 +6,15 @@ public class Level2 extends World
     private String[][] tiles;
     private Timer cycleTimer;
     private int cycleCount;
+    private boolean hasFinished;
     
     public Level2() {
         setBackground("img/BG/BGWater.png");
         
         tiles = new String[6][8];
-        cycleTimer = new Timer(1000000);
+        cycleTimer = new Timer(1000000000);
         cycleCount = 0;
+        hasFinished = false;
         
         buildWorld();
     }
@@ -82,6 +84,7 @@ public class Level2 extends World
             return;
         }
         
+        hasFinished = true;
         for(int i = 0; i < tiles[0].length; i++) {
             tiles[tiles.length - 1][i] = "floor";
         }
@@ -94,7 +97,9 @@ public class Level2 extends World
             cycleWorld();
         }
         
-        checkAndFinishLevel2();
+        if(!hasFinished) {
+            checkAndFinishLevel2();
+        }
     }
     
 }
