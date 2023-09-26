@@ -65,6 +65,8 @@ public class Level2 extends World
                 }
             }
         }
+        
+        addObject(c, c.getX(), c.getY());
     }
     
     private void spawnDMGWater() {
@@ -96,7 +98,6 @@ public class Level2 extends World
     }
     
     public void act() {
-        addObject(c, c.getX(), c.getY());
         if(cycleTimer.isDone() && cycleCount <= 50) {
             cycleTimer.reset();
             cycleWorld();
