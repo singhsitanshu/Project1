@@ -14,6 +14,7 @@ public class Cat extends MoveableAnimatedActor
     private boolean hasWon;
     private boolean hasLost;
     private boolean hasShield;
+    private int lives;
     
     //test15
     
@@ -93,5 +94,25 @@ public class Cat extends MoveableAnimatedActor
     public void setHasShield(boolean bool){
      
         hasShield = bool;
+    }
+
+    public void decreaseLives(int amount)
+    {
+        this.lives -= amount;
+        setLocation(400, 300);
+        updateText();
+    }
+    
+    public int getLives()
+    {
+        return this.lives;
+    }
+    
+    private void updateText()
+    {
+        World w = getWorld();
+        
+        w.removeText(10, 30);
+        w.showText("Lives: " + lives, 10, 30, Color.BLACK);
     }
 }
