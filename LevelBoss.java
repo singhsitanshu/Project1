@@ -26,10 +26,10 @@ public class LevelBoss extends World {
     
     public void buildWorld()
     {   
-        addObject(new Block(), 500, 600-256);
-        addObject(new Ladder(), 400, 600 - 256);
-        
+       
+        addObject(new Boss(), 100, 100);
         addObject(new Shield(), 400, 300);
+        
         tiles[2][5] = "Shield";
         
         for (int x = 0; x < tiles.length; x++)
