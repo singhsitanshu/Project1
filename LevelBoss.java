@@ -13,7 +13,7 @@ public class LevelBoss extends World {
         
         tiles = new String[10][10];
         
-        cat = new Cat();
+        cat = new Cat(3);
         addObject(cat, 50, 370);
         
         buildWorld();
@@ -27,7 +27,7 @@ public class LevelBoss extends World {
     public void buildWorld()
     {   
        
-        addObject(new Boss(), 100, 100);
+        addObject(new Boss(), 500, 200);
         addObject(new Shield(), 400, 300);
         
         tiles[2][5] = "Shield";
