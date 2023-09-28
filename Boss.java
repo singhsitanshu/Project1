@@ -11,13 +11,13 @@ public class Boss extends AnimatedActor{
         
         for (int i = 0; i < 10; i++){
             
-            files[i] = "img/jack/Idle(" + (i + 1) + ").png";
+            files[i] = "img/cat/Idle (" + (i + 1) + ").png";
         }
         
         idle = new Animation(100000000, files);
-        idle.scale(100, 87);
+        idle.scale(300, 261);
         idle.mirrorHorizontally();
-        //idle.setBounds(28, 5, 54, 80);
+        idle.setBounds(28, 5, 54, 80);
         
         setAnimation(idle);
     }
