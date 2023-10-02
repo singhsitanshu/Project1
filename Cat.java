@@ -14,7 +14,6 @@ public class Cat extends MoveableAnimatedActor
     private boolean hasCompletedLevel2;
     private boolean hasWon;
     private boolean hasLost;
-    private boolean hasShield;
     private int lives;
     private Timer invulTimer;
     
@@ -69,7 +68,6 @@ public class Cat extends MoveableAnimatedActor
         setFallAnimation(fall);
         setFallLeftAnimation(fallLeft);
         
-        hasShield = false;
         hasCompletedLevel1 = false;
         hasCompletedLevel2Cycle = false;
         hasCompletedLevel2 = false;
@@ -103,11 +101,6 @@ public class Cat extends MoveableAnimatedActor
 
     public void setHasCompletedLevel2(boolean bool) {
         hasCompletedLevel2 = bool;
-    }
-    
-    public void setHasShield(boolean bool){
-     
-        hasShield = bool;
     }
 
     public void decreaseLives(int amount)
