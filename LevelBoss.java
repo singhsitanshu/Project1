@@ -7,6 +7,7 @@ public class LevelBoss extends World {
     private String[][] tiles;
     private int missileCoolDownTimer;
     final private int MISSILE_COOL_DOWN = 400;
+    private Barrier barrier;
     
     public LevelBoss() 
     {
@@ -17,6 +18,10 @@ public class LevelBoss extends World {
         
         cat = new Cat(3);
         addObject(cat, 50, 370);
+        
+        barrier = new Barrier();
+        addObject(barrier, 0, 300);
+        
         buildWorld();
 
         missileCoolDownTimer = 0;
