@@ -13,7 +13,7 @@ public class Level2 extends World
         setBackground("img/BG/BGWater.png");
         
         tiles = new String[6][8];
-        cycleTimer = new Timer(1000000000);
+        cycleTimer = new Timer(750000000);
         cycleCount = 0;
         hasFinished = false;
         
@@ -41,6 +41,10 @@ public class Level2 extends World
         
         for(int i = 0; i < tiles.length - 1; i++) {
             for(int j = 0; j < tiles[i].length; j++) {
+                Sponge s = new Sponge();
+                addObject(s, j * 100, i * 100);
+                s.clean();
+                
                 tiles[i][j] = tiles[i + 1][j];
             }
         }
@@ -91,6 +95,7 @@ public class Level2 extends World
         }
         
         hasFinished = true;
+        c.setHasCompletedLevel2Cycle(true);
         for(int i = 0; i < tiles[0].length; i++) {
             tiles[tiles.length - 1][i] = "floor";
         }
