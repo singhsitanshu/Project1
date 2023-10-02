@@ -17,7 +17,7 @@ public class Boss extends AnimatedActor{
         idle = new Animation(100000000, files);
         idle.scale(300, 261);
         idle.mirrorHorizontally();
-        idle.setBounds(28, 5, 54, 80);
+        idle.setBounds(84, 15, 162, 240);
         
         setAnimation(idle);
     }
