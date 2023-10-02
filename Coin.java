@@ -5,7 +5,7 @@ import mayflower.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Coin extends MoveableAnimatedActor
+public class Coin extends AnimatedActor
 {
     private Animation spin;
     
@@ -19,7 +19,7 @@ public class Coin extends MoveableAnimatedActor
             files[i] = "img/GoldCoinSprite/Coin" + (i + 1) + ".png";
         }
         
-        spin = new Animation(100000000, files);
+        spin = new Animation(99999999, files);
         setAnimation(spin);
     }
     
@@ -36,6 +36,12 @@ public class Coin extends MoveableAnimatedActor
             c.increaseScore(1);
         }
         
+        setLocation(getX() - 0.25, getY());
+        if (getY() > 600)
+        {
+            World w = getWorld();
+            w.removeObject(this);
+        }
         super.act();
     }
 }
