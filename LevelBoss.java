@@ -5,29 +5,41 @@ public class LevelBoss extends World {
 
     private Cat cat;
     private String[][] tiles;
+    private int missileCoolDownTimer;
+    final private int MISSILE_COOL_DOWN = 400;
     
     public LevelBoss() 
     {
         setBackground("img/BG/BGBoss.png");
         Mayflower.showBounds(true);
         
-        tiles = new String[10][10];
+        tiles = new String[6][8];
         
         cat = new Cat(3);
         addObject(cat, 50, 370);
-        
         buildWorld();
+
+        missileCoolDownTimer = 0;
     }
     
     public void act()
     {
         
+        if (missileCoolDownTimer == MISSILE_COOL_DOWN){
+
+            int randomNum = (int)(Math.random() * 5);
+            addObject(new Missile(), 500, randomNum * 100);
+            missileCoolDownTimer = 1;
+        } else{
+
+            missileCoolDownTimer++;
+        }
     }
     
     public void buildWorld()
     {   
        
-        addObject(new Boss(), 500, 200);
+        addObject(new Boss(), 600, 200);
         addObject(new Shield(), 400, 300);
         
         tiles[2][5] = "Shield";
