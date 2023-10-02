@@ -10,5 +10,9 @@ public class FloorWater extends Actor
     }
     
     public void act() {
+        if(isTouching(Cat.class)) {
+            Cat c = (Cat) getOneIntersectingObject(Cat.class);
+            c.setHasCompletedLevel2(true);
+        }
     }
 }
