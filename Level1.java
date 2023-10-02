@@ -21,7 +21,7 @@ public class Level1 extends World {
         tiles = new String[99][99];
         blocks = new Block[101];
         ladders = new Ladder[2];
-        spikes = new Spike[1];
+        spikes = new Spike[3];
         
         cat = new Cat();
         addObject(cat, 100, 100);
@@ -30,6 +30,7 @@ public class Level1 extends World {
         barrier = new Barrier();
         addObject(barrier, 0, 300);
         
+        //addObject(obj, x, y);
         /*dog = new Dog();
         addObject(dog, 400, 400);
         
@@ -55,6 +56,12 @@ public class Level1 extends World {
         {
             spikes[i].setLocation(spikes[i].getX() - 0.25, spikes[i].getY());
         }
+        
+       int randNum = (int)(Math.random() * 7) + 1;
+       int chance = (int)(Math.random() * 300);
+       
+       if (chance < 1)
+        addObject(new Coin(), randNum * 100, 0);
     }
     
     public void buildWorld()
@@ -62,6 +69,14 @@ public class Level1 extends World {
         Spike spike = new Spike();
         spikes[0] = spike;
         addObject(spike, 600, 600 - 256);
+        
+        Spike spike2 = new Spike();
+        spikes[1] = spike2;
+        addObject(spike2, 700, 600 - 256);
+        
+        Spike spike3 = new Spike();
+        spikes[2] = spike3;
+        addObject(spike3, 742, 600 - 256);
         
         Block block = new Block();
         blocks[blocks.length-1] = block;
