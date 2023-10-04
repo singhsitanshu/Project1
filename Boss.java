@@ -3,7 +3,8 @@ import mayflower.*;
 public class Boss extends AnimatedActor{
     
     private Animation idle;
-    private Animation attack;
+    private int lives;
+    private Timer invulTimer;
     
     public Boss(){
       
@@ -20,10 +21,32 @@ public class Boss extends AnimatedActor{
         idle.setBounds(84, 15, 162, 240);
         
         setAnimation(idle);
+        lives = 10;
     }
     
     public void act(){
      
         super.act();
+    }
+    
+    public void decreaseLives(int amount)
+    {
+   
+         this.lives -= amount;
+         updateText();
+    
+    }
+    
+    public int getLives(){
+     
+        return lives;
+    }
+    
+    private void updateText()
+    {
+        World w = getWorld();
+        
+        w.removeText(10, 30);
+        w.showText("Boss Lives: " + lives, 600, 30, Color.BLACK);
     }
 }
