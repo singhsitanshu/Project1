@@ -11,12 +11,12 @@ public class Level1 extends World {
     private Block[] blocks;
     private Ladder[] ladders;
     private Spike[] spikes;
+    final private int DESPAWN_TIME = 200;
+    private int despawnCounter;
     
     public Level1() 
     {
         setBackground("img/BG/BG.png");
-        Mayflower.showBounds(true);
-        
         
         tiles = new String[99][99];
         blocks = new Block[101];
@@ -61,8 +61,11 @@ public class Level1 extends World {
        int chance = (int)(Math.random() * 300);
        
        if (chance < 1)
-        addObject(new Coin(), randNum * 100, 0);
-    }
+       {
+           Coin coin = new Coin();
+           addObject(coin, randNum * 100, 0);
+        }
+       }
     
     public void buildWorld()
     {
