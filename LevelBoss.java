@@ -8,6 +8,9 @@ public class LevelBoss extends World {
     private int missileCoolDownTimer;
     final private int MISSILE_COOL_DOWN = 400;
     private Barrier barrier;
+    private int fireballCoolDownTimer;
+    final private int FIREBALL_COOL_DOWN = 300;
+    private Boss boss;
     
     public LevelBoss() 
     {
@@ -18,6 +21,8 @@ public class LevelBoss extends World {
         
         cat = new Cat(3);
         addObject(cat, 50, 370);
+        
+        boss = new Boss();
         
         barrier = new Barrier();
         addObject(barrier, 0, 300);
@@ -39,12 +44,25 @@ public class LevelBoss extends World {
 
             missileCoolDownTimer++;
         }
+        
+        if (fireballCoolDownTimer == FIREBALL_COOL_DOWN){
+
+            int randomNum = (int)(Math.random() * 6);
+            addObject(new Fireball(), randomNum * 100, 0);
+            fireballCoolDownTimer = 1;
+        } else{
+
+            fireballCoolDownTimer++;
+        }
+        
+        if (boss.getLives() == 0)
+            cat.setHasLost(true);
     }
     
     public void buildWorld()
     {   
        
-        addObject(new Boss(), 600, 200);
+        addObject(boss, 600, 200);
         addObject(new Shield(), 400, 300);
         
         tiles[2][5] = "Shield";
