@@ -42,10 +42,6 @@ public class Level2 extends World
         
         for(int i = 0; i < tiles.length - 1; i++) {
             for(int j = 0; j < tiles[i].length; j++) {
-                Sponge s = new Sponge();
-                addObject(s, j * 100, i * 100);
-                s.clean();
-                
                 tiles[i][j] = tiles[i + 1][j];
             }
         }
@@ -57,6 +53,10 @@ public class Level2 extends World
     private void rebuildWorld() {
         for(int i = 0; i < tiles.length; i++) {
             for(int j = 0; j < tiles[i].length; j++) {
+                Sponge s = new Sponge();
+                addObject(s, j * 100, i * 100);
+                s.clean();
+                
                 switch(tiles[i][j]) {
                     case "depths":
                         addObject(new Water(waterType.DEPTHS), j * 100, i * 100);
