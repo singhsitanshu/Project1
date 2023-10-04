@@ -21,6 +21,7 @@ public class Level2 extends World
         addObject(c, 400, 100);
         
         buildWorld();
+        showText("Lives: " + c.getLives(), 10, 30, Color.BLACK);
     }
     
     public void buildWorld() {
