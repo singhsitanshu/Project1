@@ -66,7 +66,7 @@ public class MoveableAnimatedActor extends AnimatedActor
         }
 
         if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT) && x < 800 - w) {
-            setLocation(x + 1, y);
+            setLocation(x + 2, y);
             if(isBlocked()) {
                 setLocation(x, y);
             }
@@ -79,7 +79,7 @@ public class MoveableAnimatedActor extends AnimatedActor
             }
         }
         else if(Mayflower.isKeyDown(Keyboard.KEY_LEFT) && x > 0) {
-            setLocation(x - 1, y);
+            setLocation(x - 2, y);
             if(isBlocked()) {
                 setLocation(x, y);
             }
@@ -120,31 +120,44 @@ public class MoveableAnimatedActor extends AnimatedActor
                 newAction = "fallLeft";
             }
             
-            if(isDeflecting)
+            if(Mayflower.isKeyDown(Keyboard.KEY_SPACE) && hasShield){
                 newAction = "deflect";
+                isDeflecting = true;
+            }
         }
 
         if(newAction != null && !newAction.equals(currentAction)) {
             if(newAction.equals("idle")) {
                 setAnimation(idle);
+                isDeflecting = false;
             } else if(newAction.equals("idleLeft")) {
                 setAnimation(idleLeft);
+                isDeflecting = false;
             } else if(newAction.equals("fall")) {
                 setAnimation(fall);
+                isDeflecting = false;
             } else if(newAction.equals("fallLeft")) {
                 setAnimation(fallLeft);
+                isDeflecting = false;
             } else if(newAction.equals("walkRight")) {
                 setAnimation(walkRight);
+                isDeflecting = false;
             } else if(newAction.equals("walkLeft")) {
                 setAnimation(walkLeft);
+                isDeflecting = false;
             } else if (newAction.equals("deflect")){
                 setAnimation(deflect);
+                isDeflecting = true;
             }
             currentAction = newAction;
-            isDeflecting = false;
         }
     }
-
+    
+    public boolean getIsDeflecting(){
+    
+        return isDeflecting;
+    }
+    
     public void setHasShield(boolean bool){
 
         hasShield = true;
