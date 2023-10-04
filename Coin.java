@@ -8,10 +8,12 @@ import mayflower.*;
 public class Coin extends AnimatedActor
 {
     private Animation spin;
+    private Timer timer;
     
     public Coin()
     {
         String[] files = new String[6];
+        timer = new Timer(999999);
         
         //Coin1.png
         for(int i = 0; i < 6; i++)
@@ -37,11 +39,13 @@ public class Coin extends AnimatedActor
         }
         
         setLocation(getX() - 0.25, getY());
-        if (getY() > 600)
-        {
-            World w = getWorld();
-            w.removeObject(this);
-        }
+        
         super.act();
+    }
+    
+    public void remove()
+    {
+        World w = getWorld();
+        w.removeObject(this);
     }
 }
