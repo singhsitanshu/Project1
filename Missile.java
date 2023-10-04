@@ -14,8 +14,8 @@ public class Missile extends Actor{
 
         setImage(leftMissile);
 
-        leftMissile.scale(100, 85);
-        leftMissile.crop(18, 35, 70, 40);
+        leftMissile.scale(70, 40);
+        leftMissile.crop(5, 5 , 65, 35);
     }
 
     public void act(){
@@ -27,13 +27,31 @@ public class Missile extends Actor{
             setLocation(x - 1, y);
         else 
             setLocation(x + 1, y);
+            
+        if(isTouching(Cat.class)) {
+            
+            Cat c = (Cat) getOneIntersectingObject(Cat.class);
+            
+            if (c.getIsDeflecting())
+                isDeflected = true;
+            else
+                c.decreaseLives(1);
+        } 
+        
+        if(isTouching(Boss.class)) {
+            
+            Boss c = (Boss) getOneIntersectingObject(Boss.class);
+            c.decreaseLives(1);
+            World w = getWorld();
+            w.removeObject(this);
+        } 
+        
+        if (isDeflected)
+            setImage(rightMissile);
     }
 
     public void setIsDeflected(boolean bool){
 
         isDeflected = bool;
-
-        if (bool)
-            setImage(rightMissile);
     }
 }
