@@ -136,4 +136,9 @@ public class Cat extends MoveableAnimatedActor
         w.removeText(10, 30);
         w.showText("Lives: " + lives, 10, 30, Color.BLACK);
     }
+
+    public void setHasLost(boolean bool){
+        
+        hasLost = bool;
+    }
 }
