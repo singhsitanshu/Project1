@@ -56,7 +56,7 @@ public class LevelBoss extends World {
         }
         
         if (boss.getLives() == 0)
-            cat.setHasLost(true);
+            cat.setHasWon(true);
     }
     
     public void buildWorld()
