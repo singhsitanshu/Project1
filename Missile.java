@@ -5,6 +5,7 @@ public class Missile extends Actor{
     private boolean isDeflected;
     private MayflowerImage leftMissile;
     private MayflowerImage rightMissile;
+    private int missileSpeed;
 
     public Missile(){
 
@@ -16,6 +17,8 @@ public class Missile extends Actor{
 
         leftMissile.scale(70, 40);
         leftMissile.crop(5, 5 , 65, 35);
+
+        missileSpeed = 3;
     }
 
     public void act(){
@@ -24,9 +27,9 @@ public class Missile extends Actor{
         double y = getY();
 
         if (!isDeflected)
-            setLocation(x - 1, y);
+            setLocation(x - missileSpeed, y);
         else 
-            setLocation(x + 1, y);
+            setLocation(x + missileSpeed * 5, y);
             
         if(isTouching(Cat.class)) {
             
