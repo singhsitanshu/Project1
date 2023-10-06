@@ -2,7 +2,8 @@ import mayflower.*;
 
 
 public class Level1 extends World {
-
+    
+    //instance variables 
     private Cat cat;
     private Dog dog;
     private Barrier barrier;
@@ -14,36 +15,35 @@ public class Level1 extends World {
     
     public Level1() 
     {
+        //set background
         setBackground("img/BG/BG.png");
         Mayflower.showBounds(false);
         
+        //2D array to represent world
         tiles = new String[99][99];
         
+        //arrays store references to all objects in world in order to move them
         blocks = new Block[108];
         
         ladders = new Ladder[4];
         
         spikes = new Spike[3];
         
+        //spawn cat
         cat = new Cat(3);
         addObject(cat, 100, 100);
         showText("Lives: " + cat.getLives(), 10, 30, Color.BLACK);
         
+        //spawn barrier to clean as world moves
         barrier = new Barrier();
         addObject(barrier, 0, 300);
-        
-        //addObject(obj, x, y);
-        /*dog = new Dog();
-        addObject(dog, 400, 400);
-        
-        blevins = new Ninja();
-        addObject(blevins, 300, 200);*/
         
         buildWorld();
     }
     
     public void act()
     {
+        //all objects move in order to move world
         for (int i = 0; i < blocks.length; i++)
         {
             blocks[i].setLocation(blocks[i].getX() - 0.25, blocks[i].getY());
@@ -59,14 +59,18 @@ public class Level1 extends World {
             spikes[i].setLocation(spikes[i].getX() - 0.25, spikes[i].getY());
         }
         
+       //randomly generating numbers for projectile spawning
        int randNum = (int)(Math.random() * 7) + 1;
+       //random number to determine whether to spawn a coin or not
        int chance = (int)(Math.random() * 300);
        
        if (chance < 1)
        {
+           //use random number to place coin
            Coin coin = new Coin();
-           addObject(coin, randNum * 100, 0);
+           addObject(coin, (randNum * 100) + 50, 0);
            
+           //spawn 2 hazardous projectiles for every positive one
            HollowPurple hollow1 = new HollowPurple();
            HollowPurple hollow2 = new HollowPurple();
            
@@ -76,7 +80,8 @@ public class Level1 extends World {
 
         if(cat.getScore() >= 3)
         {
-            cat.setHasCompletedLevel1(true);
+            //if cat has won then move to next world
+            Mayflower.setWorld(new Level2());
             // LevelTwo() is a class that extends World()
         }
     }
@@ -147,6 +152,7 @@ public class Level1 extends World {
         ladders[3] = ladder4;
         addObject(ladder4, 1728, 600-384);
         
+        //populate 2d array
         for (int x = 0; x < tiles.length; x++)
         {
             for (int y = 0; y < tiles[x].length; y++)
@@ -155,20 +161,23 @@ public class Level1 extends World {
             }
         }
         
+        //randomly add bushes
         for (int i = 0; i < tiles.length; i++)
         {
             int x = (int)(Math.random() * 100);
             if (x < 15)
             {
-                addObject(new Bush(), i * 100, 405);
+                addObject(new Bush(), (i * 100) + 300, 405);
             }
         }
         
+        //set ground in 2d array
         for (int i = 0; i < tiles[5].length; i++)
         {
             tiles[5][i] = "ground";
         }
         
+        //set ground in world using array
         for (int r = 0; r < tiles.length; r++)
         {
             for (int c = 0; c < tiles[r].length; c++)
