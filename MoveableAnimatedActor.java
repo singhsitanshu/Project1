@@ -104,9 +104,9 @@ public class MoveableAnimatedActor extends AnimatedActor
             }
         } 
         else if (Mayflower.isKeyDown(Keyboard.KEY_SPACE) && hasShield){
-
+          
             newAction = "deflect";
-            isDeflecting = true;
+            
         }
         else 
         {
@@ -125,13 +125,9 @@ public class MoveableAnimatedActor extends AnimatedActor
             }
             
             if(Mayflower.isKeyDown(Keyboard.KEY_SPACE) && hasShield){
+                                
+                  newAction = "deflect";
                 
-                if(parryTimer.isDone()) {
-                    parryTimer.reset();
-                
-                    newAction = "deflect";
-                    isDeflecting = true;
-                }
             }
         }
 
@@ -169,8 +165,12 @@ public class MoveableAnimatedActor extends AnimatedActor
 
             } else if (newAction.equals("deflect")){
 
-                setAnimation(deflect);
-                isDeflecting = true;
+                if (parryTimer.isDone()){
+                    
+                    parryTimer.reset();
+                    setAnimation(deflect);
+                    isDeflecting = true;
+                }
             }
             
             currentAction = newAction;
