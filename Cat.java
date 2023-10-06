@@ -111,7 +111,7 @@ public class Cat extends MoveableAnimatedActor
             
             this.lives -= amount;
             if(lives <= 0) {
-                hasLost = true;
+                Mayflower.setWorld(new GameLostScreen());
             }
             updateText();
         }
