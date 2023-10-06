@@ -15,7 +15,7 @@ public class Level1 extends World {
     public Level1() 
     {
         setBackground("img/BG/BG.png");
-        Mayflower.showBounds(true);
+        Mayflower.showBounds(false);
         
         tiles = new String[99][99];
         
@@ -76,10 +76,10 @@ public class Level1 extends World {
 
         if(cat.getScore() >= 3)
         {
-            Mayflower.setWorld(new Level2() );
+            cat.setHasCompletedLevel1(true);
             // LevelTwo() is a class that extends World()
         }
-       }
+    }
     
     public void buildWorld()
     {
