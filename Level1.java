@@ -11,16 +11,18 @@ public class Level1 extends World {
     private Block[] blocks;
     private Ladder[] ladders;
     private Spike[] spikes;
-    final private int DESPAWN_TIME = 200;
-    private int despawnCounter;
     
     public Level1() 
     {
         setBackground("img/BG/BG.png");
+        Mayflower.showBounds(true);
         
         tiles = new String[99][99];
-        blocks = new Block[101];
-        ladders = new Ladder[2];
+        
+        blocks = new Block[108];
+        
+        ladders = new Ladder[4];
+        
         spikes = new Spike[3];
         
         cat = new Cat();
@@ -64,6 +66,12 @@ public class Level1 extends World {
        {
            Coin coin = new Coin();
            addObject(coin, randNum * 100, 0);
+           
+           HollowPurple hollow1 = new HollowPurple();
+           HollowPurple hollow2 = new HollowPurple();
+           
+           addObject(hollow1, (randNum * 100) - 150, 0);
+           addObject(hollow2, (randNum * 100) - 300, 0);
         }
        }
     
@@ -89,13 +97,49 @@ public class Level1 extends World {
         blocks[blocks.length-2] = block2;
         addObject(block2, 600, 600-384);
         
+        Block block3 = new Block();
+        blocks[blocks.length-3] = block3;
+        addObject(block3, 1200, 600-256);
+        
+        Block block4 = new Block();
+        blocks[blocks.length-4] = block4;
+        addObject(block4, 1300, 600-256);
+        
+        Block block5 = new Block();
+        blocks[blocks.length-5] = block5;
+        addObject(block5, 1400, 600-256);
+        
+        Block block6 = new Block();
+        blocks[blocks.length-6] = block6;
+        addObject(block6, 1500, 600-256);
+        
+        Block block7 = new Block();
+        blocks[blocks.length-7] = block7;
+        addObject(block7, 1600, 600-256);
+        
+        Block block8 = new Block();
+        blocks[blocks.length-8] = block8;
+        addObject(block8, 1700, 600-256);
+        
+        Block block9 = new Block();
+        blocks[blocks.length-9] = block9;
+        addObject(block9, 1800, 600-384);
+        
         Ladder ladder = new Ladder();
         ladders[0] = ladder;
-        addObject(ladder, 400, 600 - 256);
+        addObject(ladder, 428, 600 - 256);
         
         Ladder ladder2 = new Ladder();
         ladders[1] = ladder2;
-        addObject(ladder2, 500, 600-384);
+        addObject(ladder2, 528, 600-384);
+        
+        Ladder ladder3 = new Ladder();
+        ladders[2] = ladder3;
+        addObject(ladder3, 1128, 600 - 256);
+        
+        Ladder ladder4 = new Ladder();
+        ladders[3] = ladder4;
+        addObject(ladder4, 1728, 600-384);
         
         for (int x = 0; x < tiles.length; x++)
         {
