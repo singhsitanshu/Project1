@@ -10,8 +10,8 @@ public class Fireball extends Actor{
         
         setImage(fireball);
 
-        fireball.scale(40, 70);
-        fireball.crop(5, 5, 35, 65);
+        fireball.scale(25, 53);
+
     }
 
     public void act(){
