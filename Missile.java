@@ -49,7 +49,8 @@ public class Missile extends Actor{
                 deltaY = bossY - catY;
                 deltaX = bossX - catX;
 
-                rightMissile.rotate(Math.atan(deltaY/deltaX));
+                double degree = (deltaY > 0) ? Math.atan((deltaY)/(deltaX)) : Math.atan((deltaY * -1)/(deltaX));
+                rightMissile.rotate(degree);
                 slope = ((deltaY/deltaX) * 15.0);
             }
             else
