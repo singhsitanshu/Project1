@@ -122,6 +122,11 @@ public class Cat extends MoveableAnimatedActor
         return this.lives;
     }
 
+    public int getScore()
+    {
+        return this.score;
+    }
+
     public int getX() {
         return super.getX();
     }
