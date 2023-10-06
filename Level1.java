@@ -25,7 +25,7 @@ public class Level1 extends World {
         
         spikes = new Spike[3];
         
-        cat = new Cat();
+        cat = new Cat(3);
         addObject(cat, 100, 100);
         showText("Lives: " + cat.getLives(), 10, 30, Color.BLACK);
         
