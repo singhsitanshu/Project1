@@ -22,18 +22,18 @@ public class GravityActor extends Actor
         
         if (!isLadder())
         {
-            setLocation(getX(), getY() + 2);
+            setLocation(getX(), getY() + 1);
             touch = isBlocked();
-            setLocation(getX(), getY() - 2);
+            setLocation(getX(), getY() - 1);
         }
         
         return !touch;
     }
     
     public void act() {
-        setLocation(getX(), getY() + 2);
+        setLocation(getX(), getY() + 1);
         if(isBlocked()) {
-            setLocation(getX(), getY() - 2);
+            setLocation(getX(), getY() - 1);
         }
     }
 }
