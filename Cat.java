@@ -9,6 +9,7 @@ public class Cat extends MoveableAnimatedActor
     private Animation fall;
     private Animation fallLeft;
     private World currentLevel;
+    private Animation deflect;
     private boolean hasCompletedLevel1;
     private boolean hasCompletedLevel2Cycle;
     private boolean hasCompletedLevel2;
@@ -61,6 +62,13 @@ public class Cat extends MoveableAnimatedActor
         fallLeft.scale(100,87);
         fallLeft.mirrorHorizontally();
         fallLeft.setBounds(31, 5, 56, 80);
+
+        files = new String[1];
+
+        files[0] = "img/cat/Deflect.png";
+        deflect = new Animation(100000000, files);
+        deflect.scale(100, 87);
+        deflect.setBounds(15, 5, 80, 80);
         
         setWalkRightAnimation(walkRight);
         setWalkLeftAnimation(walkLeft);
@@ -68,6 +76,7 @@ public class Cat extends MoveableAnimatedActor
         setIdleLeftAnimation(idleLeft);
         setFallAnimation(fall);
         setFallLeftAnimation(fallLeft);
+        setDeflectAnimation(deflect);
         
         hasCompletedLevel1 = false;
         hasCompletedLevel2Cycle = false;
@@ -102,6 +111,10 @@ public class Cat extends MoveableAnimatedActor
 
     public void setHasCompletedLevel2(boolean bool) {
         hasCompletedLevel2 = bool;
+    }
+
+    public void setHasCompletedLevel1(boolean bool) {
+        hasCompletedLevel1 = bool;
     }
 
     public void decreaseLives(int amount)
