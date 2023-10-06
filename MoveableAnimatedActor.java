@@ -12,11 +12,14 @@ public class MoveableAnimatedActor extends AnimatedActor
     protected boolean hasShield;
     private Animation deflect;
     private boolean isDeflecting;
+    private Timer parryTimer;
 
     public MoveableAnimatedActor() {
+
         direction = "right";
         hasShield = false;
         isDeflecting = false;
+        parryTimer = new Timer(2000000000);
     }
 
     public void setAnimation(Animation a) {
@@ -116,39 +119,60 @@ public class MoveableAnimatedActor extends AnimatedActor
 
         if(isFalling()) {
             newAction = "fall";
+
             if(direction != null && direction.equals("left")) {
                 newAction = "fallLeft";
             }
             
             if(Mayflower.isKeyDown(Keyboard.KEY_SPACE) && hasShield){
-                newAction = "deflect";
-                isDeflecting = true;
+                
+                if(parryTimer.isDone()) {
+                    parryTimer.reset();
+                
+                    newAction = "deflect";
+                    isDeflecting = true;
+                }
             }
         }
 
         if(newAction != null && !newAction.equals(currentAction)) {
+
             if(newAction.equals("idle")) {
+
                 setAnimation(idle);
                 isDeflecting = false;
+
             } else if(newAction.equals("idleLeft")) {
+                
                 setAnimation(idleLeft);
                 isDeflecting = false;
+
             } else if(newAction.equals("fall")) {
+
                 setAnimation(fall);
                 isDeflecting = false;
+
             } else if(newAction.equals("fallLeft")) {
+
                 setAnimation(fallLeft);
                 isDeflecting = false;
+
             } else if(newAction.equals("walkRight")) {
+
                 setAnimation(walkRight);
                 isDeflecting = false;
+
             } else if(newAction.equals("walkLeft")) {
+
                 setAnimation(walkLeft);
                 isDeflecting = false;
+
             } else if (newAction.equals("deflect")){
+
                 setAnimation(deflect);
                 isDeflecting = true;
             }
+            
             currentAction = newAction;
         }
     }
