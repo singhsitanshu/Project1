@@ -6,16 +6,15 @@ public class LevelBoss extends World {
     private Cat cat;
     private String[][] tiles;
     private int missileCoolDownTimer;
-    final private int MISSILE_COOL_DOWN = 400;
-    private Barrier barrier;
+    final private int MISSILE_COOL_DOWN = 300;
     private int fireballCoolDownTimer;
-    final private int FIREBALL_COOL_DOWN = 300;
+    final private int FIREBALL_COOL_DOWN = 100;
     private Boss boss;
     
     public LevelBoss() 
     {
         setBackground("img/BG/BGBoss.png");
-        Mayflower.showBounds(true);
+        Mayflower.showBounds(false);
         
         tiles = new String[6][8];
         
@@ -24,8 +23,8 @@ public class LevelBoss extends World {
         
         boss = new Boss();
         
-        barrier = new Barrier();
-        addObject(barrier, 0, 300);
+        //barrier = new Barrier();
+        //addObject(barrier, 0, 300);
         
         buildWorld();
 
@@ -38,17 +37,17 @@ public class LevelBoss extends World {
         if (missileCoolDownTimer == MISSILE_COOL_DOWN){
 
             int randomNum = (int)(Math.random() * 5);
-            addObject(new Missile(), 500, randomNum * 100);
+            addObject(new Missile(boss), 500, randomNum * 100);
             missileCoolDownTimer = 1;
         } else{
 
             missileCoolDownTimer++;
         }
         
-        if (fireballCoolDownTimer == FIREBALL_COOL_DOWN){
+        if (fireballCoolDownTimer == ((boss.getLives() <= 5) ? FIREBALL_COOL_DOWN / 2 : FIREBALL_COOL_DOWN)){
 
-            int randomNum = (int)(Math.random() * 6);
-            addObject(new Fireball(), randomNum * 100, 0);
+            int randomNum = (int)(Math.random() * 12);
+            addObject(new Fireball(), randomNum * 50, 0);
             fireballCoolDownTimer = 1;
         } else{
 
@@ -90,7 +89,5 @@ public class LevelBoss extends World {
                 }
             }
         }
-
-
     }
 }    
