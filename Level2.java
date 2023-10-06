@@ -23,7 +23,8 @@ public class Level2 extends World
         buildWorld();
         showText("Lives: " + c.getLives(), 10, 30, Color.BLACK);
     }
-    
+
+    // builds initial world state and populates tiles
     public void buildWorld() {
         for(int i = 0; i < tiles[0].length; i++) {
             tiles[0][i] = "surface";
@@ -36,7 +37,8 @@ public class Level2 extends World
             }
         }
     }
-    
+
+    // moves all tiles in world one row upwards to create sense of falling in water
     private void cycleWorld() {
         cycleCount++;
         
@@ -49,14 +51,17 @@ public class Level2 extends World
         spawnDMGWater();
         rebuildWorld();
     }
-    
+
+    // places actors in mayflower world once every world cycle to update game state
     private void rebuildWorld() {
         for(int i = 0; i < tiles.length; i++) {
             for(int j = 0; j < tiles[i].length; j++) {
+                // sponge serves to remove all existing tiles onscreen aside from the cat to save memory
                 Sponge s = new Sponge();
                 addObject(s, j * 100, i * 100);
                 s.clean();
-                
+
+                // reads tiles array for the type of current tile, then places the appropriate tile in the world
                 switch(tiles[i][j]) {
                     case "depths":
                         addObject(new Water(waterType.DEPTHS), j * 100, i * 100);
@@ -73,13 +78,15 @@ public class Level2 extends World
         
         addObject(c, c.getX(), c.getY());
     }
-    
+
+    // randomly spawns damaging tiles at bottom of the world
     private void spawnDMGWater() {
         int spawnCooldown = 0;
         
         for(int i = 0; i < tiles[0].length; i++) {
             int check = (int)(Math.random() * 10) + 1;
-            
+
+            // 20% chance to spawn a DMGWater tile
             if(check <= 2 && spawnCooldown <= 0) {
                 tiles[tiles.length - 1][i] = "dmg";
                 spawnCooldown = 2;
@@ -89,7 +96,9 @@ public class Level2 extends World
             }
         }
     }
-    
+
+    // checks to see if allotted 50 cycles have finished
+    // if so, creates bottom of world FloorWater tiles, which move Cat to final world upon touch
     public void checkAndFinishLevel2() {
         if(cycleCount <= 50) {
             return;
@@ -104,6 +113,7 @@ public class Level2 extends World
     }
     
     public void act() {
+        // once every 0.75 seconds, the world cycles
         if(cycleTimer.isDone() && cycleCount <= 50) {
             cycleTimer.reset();
             cycleWorld();
