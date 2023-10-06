@@ -8,8 +8,8 @@ public class LevelBoss extends World {
     private int missileCoolDownTimer;
     final private int MISSILE_COOL_DOWN = 90;
     private int fireballCoolDownTimer;
-    final private int FIREBALL_COOL_DOWN = 100;
-    final private int ENRAGED_COOL_DOWN = 50;
+    final private int FIREBALL_COOL_DOWN = 75;
+    final private int ENRAGED_COOL_DOWN = 40;
     private Boss boss;
     
     public LevelBoss() 
@@ -76,7 +76,7 @@ public class LevelBoss extends World {
     {   
        
         addObject(boss, 600, 200);
-        addObject(new Shield(), 400, 300);
+        addObject(new Shield(), 200, 300);
         
         tiles[2][5] = "Shield";
         
