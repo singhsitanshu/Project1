@@ -73,6 +73,12 @@ public class Level1 extends World {
            addObject(hollow1, (randNum * 100) - 150, 0);
            addObject(hollow2, (randNum * 100) - 300, 0);
         }
+
+        if(cat.getScore() >= 3)
+        {
+            Mayflower.setWorld(new Level2() );
+            // LevelTwo() is a class that extends World()
+        }
        }
     
     public void buildWorld()
