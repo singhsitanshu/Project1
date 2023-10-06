@@ -38,7 +38,7 @@ public class Coin extends AnimatedActor
             c.increaseScore(1);
         }
         
-        setLocation(getX() - 0.25, getY());
+        setLocation(getX() - 0.1, getY());
         
         super.act();
     }
