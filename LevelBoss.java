@@ -6,9 +6,10 @@ public class LevelBoss extends World {
     private Cat cat;
     private String[][] tiles;
     private int missileCoolDownTimer;
-    final private int MISSILE_COOL_DOWN = 300;
+    final private int MISSILE_COOL_DOWN = 90;
     private int fireballCoolDownTimer;
     final private int FIREBALL_COOL_DOWN = 100;
+    final private int ENRAGED_COOL_DOWN = 50;
     private Boss boss;
     
     public LevelBoss() 
@@ -44,16 +45,29 @@ public class LevelBoss extends World {
             missileCoolDownTimer++;
         }
         
-        if (fireballCoolDownTimer == ((boss.getLives() <= 5) ? FIREBALL_COOL_DOWN / 2 : FIREBALL_COOL_DOWN)){
-
-            int randomNum = (int)(Math.random() * 12);
-            addObject(new Fireball(), randomNum * 50, 0);
-            fireballCoolDownTimer = 1;
-        } else{
-
-            fireballCoolDownTimer++;
+        if (boss.getLives() > 5){
+            
+            if (fireballCoolDownTimer == FIREBALL_COOL_DOWN){
+    
+                int randomNum = (int)(Math.random() * 12);
+                addObject(new Fireball(), randomNum * 50, 0);
+                fireballCoolDownTimer = 1;
+            } else{
+    
+                fireballCoolDownTimer++;
+            }
+        } else {
+            
+            if (fireballCoolDownTimer == ENRAGED_COOL_DOWN){
+    
+                int randomNum = (int)(Math.random() * 12);
+                addObject(new Fireball(), randomNum * 50, 0);
+                fireballCoolDownTimer = 1;
+            } else{
+    
+                fireballCoolDownTimer++;
+            }
         }
-        
         if (boss.getLives() == 0)
             cat.setHasWon(true);
     }
