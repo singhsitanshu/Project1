@@ -87,6 +87,74 @@ public class Cat extends MoveableAnimatedActor
         invulTimer = new Timer(2000000000);
     }
     
+    public Cat(int lives, int bob) 
+    {
+        String[] files = new String[10];
+        for(int i = 0; i < 10; i++) {
+            files[i] = "img/cat/Walk (" + (i + 1) + ").png";
+        }
+        
+        walkRight = new Animation(100000000, files);
+        walkRight.scale(100, 87);
+        walkRight.setBounds(18, 5, 54, 80);
+        
+        walkLeft = new Animation(100000000, files);
+        walkLeft.scale(100, 87);
+        walkLeft.mirrorHorizontally();
+        walkLeft.setBounds(28, 5, 54, 80);
+        
+        for(int i = 0; i < 10; i++) {
+            files[i] = "img/cat/Idle (" + (i + 1) + ").png";
+        }
+        
+        idle = new Animation(100000000, files);
+        idle.scale(100, 87);
+        idle.setBounds(18, 5, 54, 80);
+        
+        idleLeft = new Animation(100000000, files);
+        idleLeft.scale(100, 87);
+        idleLeft.mirrorHorizontally();
+        idleLeft.setBounds(28, 5, 54, 80);
+        
+        files = new String[8];
+        
+        for(int i = 0; i < 8; i++) {
+            files[i] = "img/cat/Fall (" + (i + 1) + ").png";
+        }
+        
+        fall = new Animation(100000000, files);
+        fall.scale(100, 87);
+        fall.setBounds(11, 5, 56, 80);
+        
+        fallLeft = new Animation(100000000, files);
+        fallLeft.scale(100,87);
+        fallLeft.mirrorHorizontally();
+        fallLeft.setBounds(31, 5, 56, 80);
+
+        files = new String[1];
+
+        files[0] = "img/cat/Deflect.png";
+        deflect = new Animation(100000000, files);
+        deflect.scale(100, 87);
+        deflect.setBounds(15, 5, 80, 80);
+        
+        setWalkRightAnimation(walkRight);
+        setWalkLeftAnimation(walkLeft);
+        setIdleAnimation(idle);
+        setIdleLeftAnimation(idleLeft);
+        setFallAnimation(fall);
+        setFallLeftAnimation(fallLeft);
+        setDeflectAnimation(deflect);
+        
+        this.hasCompletedLevel1 = true;
+        hasCompletedLevel2Cycle = false;
+        hasCompletedLevel2 = false;
+        hasWon = false;
+        hasLost = false;
+        this.lives = lives;
+        invulTimer = new Timer(2000000000);
+    }
+    
     public void act()
     {
         super.act();
@@ -98,10 +166,10 @@ public class Cat extends MoveableAnimatedActor
             Mayflower.setWorld(new GameWinScreen());
         else if (hasLost)
             Mayflower.setWorld(new GameLostScreen());
-        else if (hasCompletedLevel2)
-            Mayflower.setWorld(new LevelBoss());
-        else if (hasCompletedLevel1)
-            Mayflower.setWorld(new Level2());
+            //else if (hasCompletedLevel2)
+        //    Mayflower.setWorld(new LevelBoss());
+        //else if (hasCompletedLevel1)
+        //    Mayflower.setWorld(new Level2());
  
     }
     
