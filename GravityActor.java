@@ -8,7 +8,7 @@ import mayflower.*;
 public class GravityActor extends Actor
 {
     public boolean isBlocked() {
-        return isTouching(Block.class);
+        return isTouching(Block.class) || isTouching(MoveBlock.class);
     }
     
     public boolean isLadder() {
