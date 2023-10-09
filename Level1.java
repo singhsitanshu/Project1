@@ -9,9 +9,7 @@ public class Level1 extends World {
     private Barrier barrier;
     private String[][] tiles;
     private Ninja blevins;
-    private Block[] blocks;
-    private Ladder[] ladders;
-    private Spike[] spikes;
+    private int shift;
     
     public Level1() 
     {
@@ -21,13 +19,6 @@ public class Level1 extends World {
         
         //2D array to represent world
         tiles = new String[99][99];
-        
-        //arrays store references to all objects in world in order to move them
-        blocks = new Block[108];
-        
-        ladders = new Ladder[4];
-        
-        spikes = new Spike[3];
         
         //spawn cat
         cat = new Cat(3);
@@ -43,22 +34,6 @@ public class Level1 extends World {
     
     public void act()
     {
-        //all objects move in order to move world
-        for (int i = 0; i < blocks.length; i++)
-        {
-            blocks[i].setLocation(blocks[i].getX() - 0.25, blocks[i].getY());
-        }
-        
-        for (int i = 0; i < ladders.length; i++)
-        {
-            ladders[i].setLocation(ladders[i].getX() - 0.25, ladders[i].getY());
-        }
-        
-        for (int i = 0; i < spikes.length; i++)
-        {
-            spikes[i].setLocation(spikes[i].getX() - 0.25, spikes[i].getY());
-        }
-        
        //randomly generating numbers for projectile spawning
        int randNum = (int)(Math.random() * 7) + 1;
        //random number to determine whether to spawn a coin or not
@@ -86,72 +61,61 @@ public class Level1 extends World {
         }
     }
     
-    public void buildWorld()
+    private void buildTemplate(int shift)
     {
         Spike spike = new Spike();
-        spikes[0] = spike;
-        addObject(spike, 600, 600 - 256);
+        addObject(spike, 600 + shift, 600 - 256);
         
         Spike spike2 = new Spike();
-        spikes[1] = spike2;
-        addObject(spike2, 700, 600 - 256);
+        addObject(spike2, 700 + shift, 600 - 256);
         
         Spike spike3 = new Spike();
-        spikes[2] = spike3;
-        addObject(spike3, 742, 600 - 256);
+        addObject(spike3, 742+ shift, 600 - 256);
         
-        Block block = new Block();
-        blocks[blocks.length-1] = block;
-        addObject(block, 500, 600-256);
+        MoveBlock block = new MoveBlock();
+        addObject(block, 500+ shift, 600-256);
         
-        Block block2 = new Block();
-        blocks[blocks.length-2] = block2;
-        addObject(block2, 600, 600-384);
+        MoveBlock block2 = new MoveBlock();
+        addObject(block2, 600+ shift, 600-384);
         
-        Block block3 = new Block();
-        blocks[blocks.length-3] = block3;
-        addObject(block3, 1200, 600-256);
+        MoveBlock block3 = new MoveBlock();
+        addObject(block3, 1200+ shift, 600-256);
         
-        Block block4 = new Block();
-        blocks[blocks.length-4] = block4;
-        addObject(block4, 1300, 600-256);
+        MoveBlock block4 = new MoveBlock();
+        addObject(block4, 1300+ shift, 600-256);
         
-        Block block5 = new Block();
-        blocks[blocks.length-5] = block5;
-        addObject(block5, 1400, 600-256);
+        MoveBlock block5 = new MoveBlock();
+        addObject(block5, 1400+ shift, 600-256);
         
-        Block block6 = new Block();
-        blocks[blocks.length-6] = block6;
-        addObject(block6, 1500, 600-256);
+        MoveBlock block6 = new MoveBlock();
+        addObject(block6, 1500+ shift, 600-256);
         
-        Block block7 = new Block();
-        blocks[blocks.length-7] = block7;
-        addObject(block7, 1600, 600-256);
+        MoveBlock block7 = new MoveBlock();
+        addObject(block7, 1600+ shift, 600-256);
         
-        Block block8 = new Block();
-        blocks[blocks.length-8] = block8;
-        addObject(block8, 1700, 600-256);
+        MoveBlock block8 = new MoveBlock();
+        addObject(block8, 1700+ shift, 600-256);
         
-        Block block9 = new Block();
-        blocks[blocks.length-9] = block9;
-        addObject(block9, 1800, 600-384);
+        MoveBlock block9 = new MoveBlock();
+        addObject(block9, 1800+ shift, 600-384);
         
         Ladder ladder = new Ladder();
-        ladders[0] = ladder;
-        addObject(ladder, 428, 600 - 256);
+        addObject(ladder, 428+ shift, 600 - 256);
         
         Ladder ladder2 = new Ladder();
-        ladders[1] = ladder2;
-        addObject(ladder2, 528, 600-384);
+        addObject(ladder2, 528+ shift, 600-384);
         
         Ladder ladder3 = new Ladder();
-        ladders[2] = ladder3;
-        addObject(ladder3, 1128, 600 - 256);
+        addObject(ladder3, 1128+ shift, 600 - 256);
         
         Ladder ladder4 = new Ladder();
-        ladders[3] = ladder4;
-        addObject(ladder4, 1728, 600-384);
-        
+        addObject(ladder4, 1728+ shift, 600-384);
+    }
+    
+    public void buildWorld()
+    {   
+        for (shift = 0; shift < 8001; shift += 2000)
+        { buildTemplate(shift);}
         //populate 2d array
         for (int x = 0; x < tiles.length; x++)
         {
@@ -184,8 +148,7 @@ public class Level1 extends World {
             {
                 if (tiles[r][c].equals("ground"))
                 {
-                    Block ground = new Block();
-                    blocks[c] = ground;
+                    MoveBlock ground = new MoveBlock();
                     addObject(ground, c * 128, 600 - 128);
                 }
             }
