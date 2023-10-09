@@ -15,6 +15,8 @@ public class Spike extends Actor
     
     public void act()
     {
+        setLocation(getX() - 0.25, getY());
+        
         if (isTouching(Cat.class))
         {
             Object a = getOneIntersectingObject(Cat.class);
