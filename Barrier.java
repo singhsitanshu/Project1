@@ -45,5 +45,13 @@ public class Barrier extends Actor
             World w = getWorld();
             w.removeObject(c);
         }
+        
+        if (isTouching(MoveBlock.class))
+        {
+            Object a = getOneIntersectingObject(MoveBlock.class);
+            MoveBlock c = (MoveBlock)a;     
+            World w = getWorld();
+            w.removeObject(c);
+        }
     }
 }
