@@ -13,5 +13,6 @@ public class Ladder extends Actor
     }
     
     public void act(){
+        setLocation(getX() - 0.25, getY());
     }
 }
