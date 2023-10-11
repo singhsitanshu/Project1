@@ -24,7 +24,7 @@ public class Level1 extends World {
         //spawn cat
         cat = new Cat(3);
         addObject(cat, 100, 100);
-        showText("Lives: " + cat.getLives(), 10, 30, Color.BLACK);
+        showText("Score: " + cat.getScore() + "Lives: " + cat.getLives(), 10, 30, Color.BLACK);
         
         //spawn barrier to clean as world moves
         barrier = new Barrier();
