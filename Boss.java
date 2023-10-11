@@ -46,7 +46,7 @@ public class Boss extends AnimatedActor{
     {
         World w = getWorld();
         
-        w.removeText(10, 30);
+        w.removeText(600, 30);
         w.showText("Boss Lives: " + lives, 600, 30, Color.BLACK);
     }
 }
