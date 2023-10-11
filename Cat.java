@@ -224,7 +224,10 @@ public class Cat extends MoveableAnimatedActor
         World w = getWorld();
         
         w.removeText(10, 30);
-        w.showText("Score: " + this.score + " Lives: " + lives, 10, 30, Color.BLACK);
+        if(!hasCompletedLevel1) {
+            w.showText("Score: " + this.score + " Lives: " + lives, 10, 30, Color.BLACK);
+        } else {
+            w.showText("Lives: " + lives, 10, 30, Color.BLACK);
     }
     
     public void increaseScore(int amount)
