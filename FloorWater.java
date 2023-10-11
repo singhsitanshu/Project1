@@ -10,9 +10,9 @@ public class FloorWater extends Actor
     }
     
     public void act() {
+        // if the Cat comes into contact with the bottom of Level2, send it to the Boss Level
         if(isTouching(Cat.class)) {
-            Cat c = (Cat) getOneIntersectingObject(Cat.class);
-            c.setHasCompletedLevel2(true);
+            Mayflower.setWorld(new LevelBoss());
         }
     }
 }
