@@ -12,7 +12,7 @@ public class Boss extends AnimatedActor{
         
         for (int i = 0; i < 10; i++){
             
-            files[i] = "img/cat/Idle (" + (i + 1) + ").png";
+            files[i] = "img/boss/Idle (" + (i + 1) + ").png";
         }
         
         idle = new Animation(100000000, files);
