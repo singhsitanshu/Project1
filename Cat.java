@@ -158,6 +158,8 @@ public class Cat extends MoveableAnimatedActor
     public void act()
     {
         super.act();
+        // if Cat is in the process of completing Level2
+        // remove the effect of gravity, so it does not fall down on the screen
         if(hasCompletedLevel1 && !hasCompletedLevel2Cycle) {
             setLocation(getX(), getY() - 1);
         }
@@ -187,6 +189,7 @@ public class Cat extends MoveableAnimatedActor
 
     public void decreaseLives(int amount)
     {
+        // creates a 2 second invunerability window to prevent Cat dying instantly on a hazard
         if(invulTimer.isDone()) {
             invulTimer.reset();
             
