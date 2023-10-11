@@ -9,7 +9,8 @@ public class Level1 extends World {
     private Barrier barrier;
     private String[][] tiles;
     private Ninja blevins;
-    private int shift;
+    private int shift = 0;
+    private int coinRun = 2;
     
     public Level1() 
     {
@@ -44,6 +45,14 @@ public class Level1 extends World {
            //use random number to place coin
            Coin coin = new Coin();
            addObject(coin, (randNum * 100) + 50, 0);
+           coinRun++;
+           
+           if (coinRun >= 2)
+           {
+               coinRun = 0;
+               buildTemplate(shift);
+               shift += 2000;
+           }
            
            //spawn 2 hazardous projectiles for every positive one
            HollowPurple hollow1 = new HollowPurple();
@@ -114,8 +123,6 @@ public class Level1 extends World {
     
     public void buildWorld()
     {   
-        for (shift = 0; shift < 8001; shift += 2000)
-        { buildTemplate(shift);}
         //populate 2d array
         for (int x = 0; x < tiles.length; x++)
         {
