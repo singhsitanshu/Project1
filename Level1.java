@@ -132,16 +132,6 @@ public class Level1 extends World {
             }
         }
         
-        //randomly add bushes
-        for (int i = 0; i < tiles.length; i++)
-        {
-            int x = (int)(Math.random() * 100);
-            if (x < 15)
-            {
-                addObject(new Bush(), (i * 100) + 300, 405);
-            }
-        }
-        
         //set ground in 2d array
         for (int i = 0; i < tiles[5].length; i++)
         {
