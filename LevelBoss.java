@@ -30,6 +30,8 @@ public class LevelBoss extends World {
         buildWorld();
 
         missileCoolDownTimer = 0;
+        showText("Lives: " + cat.getLives(), 10, 30, Color.BLACK);
+        showText("Boss Lives: " + boss.getLives(), 600, 30, Color.BLACK);
     }
     
     public void act()
